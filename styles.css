@@ -21,3 +21,7 @@ body {
   justify-content: center;
   background-color: aqua;
 }
+
+#employees li.favorite {
+  background-color: linen;
+}

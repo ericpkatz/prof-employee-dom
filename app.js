@@ -11,15 +11,23 @@ const employees = [
 
 const list = document.querySelector('#employees');
 
+list.addEventListener('click', (ev)=> {
+  const target = ev.target;
+  if(target.tagName === 'LI'){
+    const idx = [...list.children].indexOf(target);
+    employees[idx].favorite = !employees[idx].favorite;
+  }
+  render();
+});
+
 const render = ()=> {
   const html = employees.map( employee => {
     return `
-      <li>${ employee.name }</li>
+      <li data-id='${employee.id}' ${ employee.favorite ? "class='favorite'": ''}>${ employee.name }</li>
     `;
   }).join('');
 
   list.innerHTML = html;
-
 };
 
 render();
