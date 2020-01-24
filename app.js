@@ -15,7 +15,13 @@ list.addEventListener('click', (ev)=> {
   const target = ev.target;
   if(target.tagName === 'LI'){
     const idx = [...list.children].indexOf(target);
-    employees[idx].favorite = !employees[idx].favorite;
+    const numberOfFavorites = employees.filter(employee => employee.favorite).length;
+    if(!target.classList.contains('favorite') && numberOfFavorites === 3){
+      alert('only 3!');
+    }
+    else {
+      employees[idx].favorite = !employees[idx].favorite;
+    }
   }
   render();
 });
